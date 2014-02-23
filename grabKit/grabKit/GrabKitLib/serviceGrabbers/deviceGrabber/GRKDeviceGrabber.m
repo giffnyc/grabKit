@@ -96,7 +96,7 @@ static NSString *kGRKServiceNameDevice = @"device";
         
         NSException* exception = [NSException
                                   exceptionWithName:@"numberOfAlbumsPerPageTooHigh"
-                                  reason:[NSString stringWithFormat:@"The number of albums per page you asked (%d) is too high", numberOfAlbumsPerPage]
+                                  reason:[NSString stringWithFormat:@"The number of albums per page you asked (%lu) is too high", (unsigned long)numberOfAlbumsPerPage]
                                   userInfo:nil];
         @throw exception;
     }
@@ -294,7 +294,7 @@ withNumberOfPhotosPerPage:(NSUInteger)numberOfPhotosPerPage
         
         NSException* exception = [NSException
                                   exceptionWithName:@"numberOfPhotosPerPageTooHigh"
-                                  reason:[NSString stringWithFormat:@"The number of photos per page you asked (%d) is too high", numberOfPhotosPerPage]
+                                  reason:[NSString stringWithFormat:@"The number of photos per page you asked (%lu) is too high", (unsigned long)numberOfPhotosPerPage]
                                   userInfo:nil];
         @throw exception;
     }
@@ -547,7 +547,7 @@ Then : we have to fetch from "(page index) * (number of photo per page)" to "ran
 
     // if retrieving the photoId from the asset failed, let's build a default photoId from the index
     if ( [photoId isEqualToString:@""] )
-    	photoId = [NSString stringWithFormat:@"%d", index];
+    	photoId = [NSString stringWithFormat:@"%lu", (unsigned long)index];
     
     NSDate * dateTaken = [asset valueForProperty:ALAssetPropertyDate];
     NSMutableDictionary * dates = [NSMutableDictionary dictionary];

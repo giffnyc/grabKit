@@ -392,6 +392,8 @@
 		5FF1FF3715BF21FF00EF2CE4 /* GRKServiceQueryProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3C2D0915B9F945008D894A /* GRKServiceQueryProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FF1FF3815BF21FF00EF2CE4 /* GRKTokenStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3C2D0B15B9F945008D894A /* GRKTokenStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FF1FF3915BF21FF00EF2CE4 /* GRKTokenStoreUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3C2D0D15B9F945008D894A /* GRKTokenStoreUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91D756F418BA8DD100D228A0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D756F318BA8DD100D228A0 /* FacebookSDK.framework */; };
+		91D756F518BA8DD100D228A0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D756F318BA8DD100D228A0 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -801,6 +803,7 @@
 		5FEE8C1816FC3C55002C995B /* GRKFlickrSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKFlickrSingleton.m; sourceTree = "<group>"; };
 		5FEE9DEB15DF6CC900C44501 /* GRKPicasaQueriesQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRKPicasaQueriesQueue.h; sourceTree = "<group>"; };
 		5FEE9DEC15DF6CC900C44501 /* GRKPicasaQueriesQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRKPicasaQueriesQueue.m; sourceTree = "<group>"; };
+		91D756F318BA8DD100D228A0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -816,6 +819,7 @@
 				5FD46C9416B9122800EE496F /* QuartzCore.framework in Frameworks */,
 				5F3C2E3515BA06E3008D894A /* Security.framework in Frameworks */,
 				5F990C481702F42200B89A7B /* Social.framework in Frameworks */,
+				91D756F418BA8DD100D228A0 /* FacebookSDK.framework in Frameworks */,
 				5F3C2E3615BA06E3008D894A /* SystemConfiguration.framework in Frameworks */,
 				5F3C2B4F15B9F7FC008D894A /* UIKit.framework in Frameworks */,
 				5F3C2B5115B9F7FC008D894A /* Foundation.framework in Frameworks */,
@@ -845,6 +849,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FD3999815BF1E2B0063542C /* Foundation.framework in Frameworks */,
+				91D756F518BA8DD100D228A0 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +881,7 @@
 		5F3C2B4D15B9F7FC008D894A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91D756F318BA8DD100D228A0 /* FacebookSDK.framework */,
 				5F990C471702F42200B89A7B /* Social.framework */,
 				5FD46C9316B9122800EE496F /* QuartzCore.framework */,
 				5F8E24A816A7F8660090F93B /* Accounts.framework */,
@@ -1895,7 +1901,7 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 			};
-			buildConfigurationList = 5F3C2B4415B9F7FC008D894A /* Build configuration list for PBXProject "GrabKit" */;
+			buildConfigurationList = 5F3C2B4415B9F7FC008D894A /* Build configuration list for PBXProject "grabKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2305,8 +2311,12 @@
 		5F3C2B7815B9F7FC008D894A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/giff/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrabKit/GrabKitDemo/grabKitDemo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2331,8 +2341,12 @@
 		5F3C2B7915B9F7FC008D894A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/giff/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrabKit/GrabKitDemo/grabKitDemo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2438,9 +2452,13 @@
 		5FD399A015BF1E2B0063542C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				DSTROOT = /tmp/GrabKitLib.dst;
 				EXECUTABLE_PREFIX = "";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/giff/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrabKitLib/GrabKitLib-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2458,9 +2476,13 @@
 		5FD399A115BF1E2B0063542C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				DSTROOT = /tmp/GrabKitLib.dst;
 				EXECUTABLE_PREFIX = "";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/giff/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrabKitLib/GrabKitLib-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2478,7 +2500,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5F3C2B4415B9F7FC008D894A /* Build configuration list for PBXProject "GrabKit" */ = {
+		5F3C2B4415B9F7FC008D894A /* Build configuration list for PBXProject "grabKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F3C2B7515B9F7FC008D894A /* Debug */,

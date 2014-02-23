@@ -250,7 +250,7 @@ NSString * const kGRKPhotoDatePropertyDateTaken = @"kGRKPhotoDatePropertyDateTak
     else if ([_caption length] < indexForSubstringCaption+1 ) indexForSubstringCaption = [_caption length] -1;
 
     
-    return [NSString stringWithFormat:@"<%@: %p photoId:'%@' name:'%@' caption:'%@' actual images count:%d >", [self class], self, _photoId, _name, [_caption substringToIndex:indexForSubstringCaption], [_images count]];
+    return [NSString stringWithFormat:@"<%@: %p photoId:'%@' name:'%@' caption:'%@' actual images count:%lu >", [self class], self, _photoId, _name, [_caption substringToIndex:indexForSubstringCaption], (unsigned long)[_images count]];
     
 }
 

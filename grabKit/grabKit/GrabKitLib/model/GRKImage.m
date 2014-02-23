@@ -69,7 +69,7 @@
 -(NSString *)description;
 {
     
-    return [NSString stringWithFormat:@"<%@: %p [%dx%d] url: %@ %@>", [self class], self, _width, _height, [_URL absoluteString], _isOriginal?@"original ":@""];
+    return [NSString stringWithFormat:@"<%@: %p [%lux%lu] url: %@ %@>", [self class], self, (unsigned long)_width, (unsigned long)_height, [_URL absoluteString], _isOriginal?@"original ":@""];
     
 }
 

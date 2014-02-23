@@ -107,7 +107,7 @@ NSUInteger maxNumberOfThumbnailsToDownloadSimultaneously = 5;
     
     NSData * thumbnailData = UIImageJPEGRepresentation(thumbnailImage, 0);
     
-    int thumbnailCost = [thumbnailData length];
+    NSInteger thumbnailCost = [thumbnailData length];
     
     [[GRKPickerThumbnailManager cache] setObject:thumbnailData // thumbnailImage
                                              forKey:[self cacheKeyForURL:thumbnailURL andSize:size]

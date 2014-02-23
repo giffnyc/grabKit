@@ -33,6 +33,8 @@
 #import "GRKTokenStore.h"
 
 #import <FacebookSDK/FBSession.h>
+#import <FacebookSDK/FBSettings.h>
+
 #import <FacebookSDK/FBError.h>
 
 
@@ -75,7 +77,7 @@ static NSString * expirationDateKey = @"ExpirationDateKey";
             [[GRKConnectorsDispatcher sharedInstance] registerServiceConnectorAsConnecting:self];
             _applicationDidEnterBackground = NO;
         
-            [FBSession setDefaultAppID:[GRKCONFIG facebookAppId]];
+            [FBSettings setDefaultAppID:[GRKCONFIG facebookAppId]];
             NSArray *permissions = [NSArray arrayWithObjects:@"user_photos", @"user_photo_video_tags", nil];
         
         

@@ -153,10 +153,10 @@ NSUInteger kCellHeight = 75;
 
 -(void) loadPage:(NSUInteger)pageIndex; {
     
-    if ( [_indexesOfLoadingPages containsObject:[NSNumber numberWithInt:pageIndex]] )
+    if ( [_indexesOfLoadingPages containsObject:[NSNumber numberWithInteger:pageIndex]] )
         return;
     
-    if ( [_indexesOfLoadedPages containsObject:[NSNumber numberWithInt:pageIndex]] )
+    if ( [_indexesOfLoadedPages containsObject:[NSNumber numberWithInteger:pageIndex]] )
         return;
 
     
@@ -165,7 +165,7 @@ NSUInteger kCellHeight = 75;
         
         
         // If the previous page has not been loaded,
-        if ( ! [_indexesOfLoadedPages containsObject:[NSNumber numberWithInt:pageIndex-1]] ) {
+        if ( ! [_indexesOfLoadedPages containsObject:[NSNumber numberWithInteger:pageIndex-1]] ) {
             
             
                 // mark pageIndex to load
@@ -225,7 +225,7 @@ withNumberOfPhotosPerPage:kNumberOfPhotosPerPage
                
                NSMutableArray * indexPathsToReload = [NSMutableArray array];
            
-               for ( int i = (pageIndex * kNumberOfPhotosPerPage);
+               for ( NSInteger i = (pageIndex * kNumberOfPhotosPerPage);
                     i <= (pageIndex+1) * kNumberOfPhotosPerPage -1 && i < _album.count - 1;
                     i++ ){
            
@@ -246,9 +246,9 @@ withNumberOfPhotosPerPage:kNumberOfPhotosPerPage
          
            
        } andErrorBlock:^(NSError *error) {
-           NSLog(@" error for page %d : %@", pageIndex,  error);
+           NSLog(@" error for page %lu : %@", (unsigned long)pageIndex,  error);
            
-           [_indexesOfLoadingPages removeObject:[NSNumber numberWithInt:pageIndex]];
+           [_indexesOfLoadingPages removeObject:[NSNumber numberWithInteger:pageIndex]];
            [self setState:GRKPickerPhotosListStateGrabbingFailed];
            
        }];
@@ -378,13 +378,13 @@ withNumberOfPhotosPerPage:kNumberOfPhotosPerPage
     
     [self setState:GRKPickerPhotosListStateGrabbing];
     
-    if ( [_indexesOfLoadingPages indexOfObject:[NSNumber numberWithInt:pageIndex]] == NSNotFound ){
+    if ( [_indexesOfLoadingPages indexOfObject:[NSNumber numberWithInteger:pageIndex]] == NSNotFound ){
 
-        [_indexesOfLoadingPages addObject:[NSNumber numberWithInt:pageIndex]];
+        [_indexesOfLoadingPages addObject:[NSNumber numberWithInteger:pageIndex]];
         //NSLog(@" page %d marked as LOADING", pageIndex);
     }
     
-    [_indexesOfPagesToLoad removeObject:[NSNumber numberWithInt:pageIndex]];
+    [_indexesOfPagesToLoad removeObject:[NSNumber numberWithInteger:pageIndex]];
     
 }
 
@@ -392,16 +392,16 @@ withNumberOfPhotosPerPage:kNumberOfPhotosPerPage
     
     //NSLog(@" page %d marked as LOADED", pageIndex);
     
-    [_indexesOfLoadedPages addObject:[NSNumber numberWithInt:pageIndex]];
-    [_indexesOfLoadingPages removeObject:[NSNumber numberWithInt:pageIndex]];
-    [_indexesOfPagesToLoad removeObject:[NSNumber numberWithInt:pageIndex]];
+    [_indexesOfLoadedPages addObject:[NSNumber numberWithInteger:pageIndex]];
+    [_indexesOfLoadingPages removeObject:[NSNumber numberWithInteger:pageIndex]];
+    [_indexesOfPagesToLoad removeObject:[NSNumber numberWithInteger:pageIndex]];
 }
 
 
 -(void) markPageIndexToLoad:(NSUInteger)pageIndex;{
     
-    if ( [_indexesOfPagesToLoad indexOfObject:[NSNumber numberWithInt:pageIndex]] == NSNotFound ){
-        [_indexesOfPagesToLoad addObject:[NSNumber numberWithInt:pageIndex]];
+    if ( [_indexesOfPagesToLoad indexOfObject:[NSNumber numberWithInteger:pageIndex]] == NSNotFound ){
+        [_indexesOfPagesToLoad addObject:[NSNumber numberWithInteger:pageIndex]];
         
         //NSLog(@" page %d marked as TO LOAD", pageIndex);
     }

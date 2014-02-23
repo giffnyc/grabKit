@@ -178,7 +178,7 @@
         GRKImage * originalImage = [firstPhoto originalImage];
         
         NSLog(@" the URL of the original image of the first selected photo is : %@", originalImage.URL );
-        NSLog(@" the size of this image is : %d x %d ", originalImage.width, originalImage.height );
+        NSLog(@" the size of this image is : %lu x %lu ", (unsigned long)originalImage.width, (unsigned long)originalImage.height );
         
         // Warning : this image can be VERY BIG (for example, on FlickR, original images can weight 5MB !)
         

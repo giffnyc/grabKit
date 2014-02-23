@@ -156,7 +156,7 @@ static NSString *kGRKServiceNameFacebook = @"Facebook";
         
         NSException* exception = [NSException
                                   exceptionWithName:@"numberOfAlbumsPerPageTooHigh"
-                                  reason:[NSString stringWithFormat:@"The number of albums per page you asked (%d) is too high", numberOfAlbumsPerPage]
+                                  reason:[NSString stringWithFormat:@"The number of albums per page you asked (%lu) is too high", (unsigned long)numberOfAlbumsPerPage]
                                   userInfo:nil];
         @throw exception;
     }
@@ -229,11 +229,11 @@ static NSString *kGRKServiceNameFacebook = @"Facebook";
             NSString * graphPath = @"me/albums";
             NSMutableDictionary * params = [NSMutableDictionary  dictionaryWithObjectsAndKeys:@"id,name,count,updated_time,created_time,location", @"fields", nil];
             
-            NSNumber * offset = [NSNumber numberWithInt:(pageIndex * numberOfAlbumsPerPage )];
+            NSNumber * offset = [NSNumber numberWithInteger:(pageIndex * numberOfAlbumsPerPage )];
             // minus one : refer to the implementation details above
             
             [params setObject:[offset stringValue] forKey:@"offset"];
-            [params setObject:[NSString stringWithFormat:@"%d", numberOfAlbumsPerPage] forKey:@"limit"];
+            [params setObject:[NSString stringWithFormat:@"%lu", (unsigned long)numberOfAlbumsPerPage] forKey:@"limit"];
             
             [batchQuery addQueryWithGraphPath:graphPath withParams:params andName:@"albums"  andHandlingBlock:^id(GRKFacebookBatchQuery *query, id result, NSError *error) {
                 
@@ -327,11 +327,11 @@ static NSString *kGRKServiceNameFacebook = @"Facebook";
         
         NSMutableDictionary * params = [NSMutableDictionary  dictionaryWithObjectsAndKeys:@"id,name,count,updated_time,created_time,location", @"fields", nil];
         
-        NSNumber * offset = [NSNumber numberWithInt:(pageIndex * numberOfAlbumsPerPage ) -1 ]; 
+        NSNumber * offset = [NSNumber numberWithInteger:(pageIndex * numberOfAlbumsPerPage ) -1 ];
                     // minus one : refer to the implementation details above
             
         [params setObject:[offset stringValue] forKey:@"offset"];	
-        [params setObject:[NSString stringWithFormat:@"%d", numberOfAlbumsPerPage] forKey:@"limit"];
+        [params setObject:[NSString stringWithFormat:@"%lu", (unsigned long)numberOfAlbumsPerPage] forKey:@"limit"];
         
         
        __weak __block GRKFacebookQuery * albumsQuery = nil;
@@ -401,7 +401,7 @@ withNumberOfPhotosPerPage:(NSUInteger)numberOfPhotosPerPage
         
         NSException* exception = [NSException
                                   exceptionWithName:@"numberOfPhotosPerPageTooHigh"
-                                  reason:[NSString stringWithFormat:@"The number of photos per page you asked (%d) is too high", numberOfPhotosPerPage]
+                                  reason:[NSString stringWithFormat:@"The number of photos per page you asked (%lu) is too high", (unsigned long)numberOfPhotosPerPage]
                                   userInfo:nil];
         @throw exception;
     }
@@ -409,9 +409,9 @@ withNumberOfPhotosPerPage:(NSUInteger)numberOfPhotosPerPage
     
     NSMutableDictionary * params = [NSMutableDictionary  dictionary];
     
-    NSNumber * offset = [NSNumber numberWithInt:(pageIndex * numberOfPhotosPerPage )];
+    NSNumber * offset = [NSNumber numberWithInteger:(pageIndex * numberOfPhotosPerPage )];
     [params setObject:[offset stringValue] forKey:@"offset"];	
-    [params setObject:[NSString stringWithFormat:@"%d", numberOfPhotosPerPage] forKey:@"limit"];
+    [params setObject:[NSString stringWithFormat:@"%lu", (unsigned long)numberOfPhotosPerPage] forKey:@"limit"];
     [params setObject:@"id,name,created_time,updated_time,images,height,width" forKey:@"fields"];    
 
     __weak __block GRKFacebookQuery * fillAlbumQuery = nil;
